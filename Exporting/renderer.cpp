@@ -1,60 +1,3 @@
-bool tetromino[7][16];
-tetromino[0] =
-{
-	false, false, true, false,
-	false, false, true, false,
-	false, false, true, false,
-	false, false, true, false
-};
-tetromino[1] =
-{
-	false, false, true, false,
-	false, true, true, false,
-	false, true, false, false,
-	false, false, false, false
-};
-tetromino[2] =
-{
-	false, true, false, false,
-	false, true, true, false,
-	false, false, true, false,
-	false, false, false, false
-};
-tetromino[3] =
-{
-	false, false, false, false,
-	false, true, true, false,
-	false, true, true, false,
-	false, false, false, false
-};
-tetromino[3] =
-{
-	false, false, false, false,
-	false, true, true, false,
-	false, true, true, false,
-	false, false, false, false
-};
-tetromino[4] =
-{
-	false, false, true, false,
-	false, true, true, false,
-	false, false, true, false,
-	false, false, false, false
-};
-tetromino[5] =
-{
-	false, false, false, false,
-	false, true, true, false,
-	false, false, true, false,
-	false, false, true, false
-};
-tetromino[6] =
-{
-	false, false, false, false,
-	false, true, true, false,
-	false, true, false, false,
-	false, true, false, false
-};
 internal void
 clear_screen(u32 color)
 {
@@ -111,17 +54,26 @@ draw_rect(float x, float y, float half_size_x, float half_size_y, u32 color)
 }
 
 internal void
-draw_tetromino(int tetroType, float x, float y, float half_size)
+draw_tetromino(int tetroType, int x, int y, float half_size)
 {
+	int tetromino[7][16];
+	tetromino[0] = {0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0};
+	tetromino[1] = {0,0,1,0,0,1,1,0,0,1,0,0,0,0,0,0};
+	tetromino[2] = {0,1,0,0,0,1,1,0,0,0,1,0,0,0,0,0};
+	tetromino[3] = {0,0,0,0,0,1,1,0,0,1,1,0,0,0,0,0};
+	tetromino[4] = {0,0,1,0,0,1,1,0,0,0,1,0,0,0,0,0};
+	tetromino[5] = {0,0,0,0,0,1,1,0,0,0,1,0,0,0,1,0};
+	tetromino[6] = {0,0,0,0,0,1,1,0,0,1,0,0,0,1,0,0};
+
 	float x0, x1, y0, y1;
 	u32 color = 0x444444;
 	//ensures rect is proportional
 	x *= render_state.height * render_scale;
 	y *= render_state.height * render_scale;
-	half_size_x *= render_state.height * render_scale;
+	half_size *= render_state.height * render_scale;
 
-	x += render_state.width / 2.f;
-	y += render_state.height / 2.f;
+	x += render_state.width / 2;
+	y += render_state.height / 2;
 
 	for (int p; p < 16; p++)
 	{
